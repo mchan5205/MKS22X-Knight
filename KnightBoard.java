@@ -38,6 +38,9 @@ public class KnightBoard{
 
   }
   private boolean solveH(int row, int col, int level){
+    if (row < 0 || col < 0 || row > board.length || col > board[0].length){
+      return false;
+    }
     if (board[row][col] == 0){
       board[row][col] == level;
     }
@@ -47,6 +50,25 @@ public class KnightBoard{
     if (level == board.length * board[0].length){
       return true;
     }
-    
+    for (int r = 1; r < 3; r++){
+      for (int c = 1; c < 3; c++){
+        if (solveH(row + r, col + c, level + 1)){
+          return true;
+        }
+        else{
+          if (!(row + r < 0 || col + c < 0 || row + r > board.length || col + c > board[0].length)){
+            board[row + r][col + c] == 0;
+          }
+        }
+        if (solveH(row - r, col - c, level + 1)){
+          return true;
+        }
+        else{
+          if (!(row - r < 0 || col - c < 0 || row - r > board.length || col - c > board[0].length)){
+            board[row - r][col - c] == 0;
+          }
+        }
+      }
+    }
   }
 }
