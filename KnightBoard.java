@@ -34,4 +34,19 @@ public class KnightBoard{
       return s;
     }
   }
+  public boolean solve(int startingRow, int startingCol){
+
+  }
+  private boolean solveH(int row, int col, int level){
+    if (board[row][col] == 0){
+      board[row][col] == level;
+    }
+    else{
+      return false;
+    }
+    if (level == board.length * board[0].length){
+      return true;
+    }
+    
+  }
 }
