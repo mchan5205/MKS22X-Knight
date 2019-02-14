@@ -20,12 +20,12 @@ public class KnightBoard{
     }
     for (int x = 0; x < board.length; x++){
       for (int y = 0; y < board[x].length; y++){
-        if (great && board[x][y] < 10 && board[x][y] != 0){
+        if (great && board[x][y] < 10){
           s += " " + board[x][y] + " ";
         }
-        else if (board[x][y] == 0){
-          s += "_ ";
-        }
+      //  else if (board[x][y] == 0){
+      //  s += "_ ";
+      //  }
         else{
           s += board[x][y] + " ";
         }
@@ -43,6 +43,13 @@ public class KnightBoard{
     }
     if (board[row][col] == 0){
       board[row][col] = level;
+    /*  for (int i = 0; i < board.length; i++){
+        for (int x = 0; x < board[i].length; x++){
+          System.out.print(board[i][x]);
+        }
+        System.out.println();
+      }
+      System.out.println(); */
     }
     else{
       return false;
@@ -50,23 +57,83 @@ public class KnightBoard{
     if (level == board.length * board[0].length){
       return true;
     }
-    for (int r = 1; r < 3; r++){
-      for (int c = 1; c < 3; c++){
-        if (solveH(row + r, col + c, level + 1)){
-          return true;
+    if (solveH(row + 1, col + 2, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row + 1 < 0 || col + 2 < 0 || row + 1 >= board.length || col + 2 >= board[0].length)){
+        if (board[row + 1][col + 2] == level + 1){
+          board[row + 1][col + 2] = 0;
         }
-        else{
-          if (!(row + r < 0 || col + c < 0 || row + r >= board.length || col + c >= board[0].length)){
-            board[row + r][col + c] = 0;
-          }
+      }
+    }
+    if (solveH(row - 1, col - 2, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row - 1 < 0 || col - 2 < 0 || row - 1 >= board.length || col - 2 >= board[0].length)){
+        if (board[row - 1][col - 2] == level + 1){
+          board[row - 1][col - 2] = 0;
         }
-        if (solveH(row - r, col - c, level + 1)){
-          return true;
+      }
+    }
+    if (solveH(row + 1, col - 2, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row + 1 < 0 || col - 2 < 0 || row + 1 >= board.length || col - 2 >= board[0].length)){
+        if (board[row + 1][col - 2] == level + 1){
+          board[row + 1][col - 2] = 0;
         }
-        else{
-          if (!(row - r < 0 || col - c < 0 || row - r >= board.length || col - c >= board[0].length)){
-            board[row - r][col - c] = 0;
-          }
+      }
+    }
+    if (solveH(row - 1, col + 2, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row - 1 < 0 || col + 2 < 0 || row - 1 >= board.length || col + 2 >= board[0].length)){
+        if (board[row - 1][col + 2] == level + 1){
+          board[row - 1][col + 2] = 0;
+        }
+      }
+    }
+    if (solveH(row + 2, col + 1, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row + 2 < 0 || col + 1 < 0 || row + 2 >= board.length || col + 1 >= board[0].length)){
+        if (board[row + 2][col + 1] == level + 1){
+          board[row + 2][col + 1] = 0;
+        }
+      }
+    }
+    if (solveH(row - 2, col - 1, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row - 2 < 0 || col - 1 < 0 || row - 2 >= board.length || col - 1 >= board[0].length)){
+        if (board[row - 2][col - 1] == level + 1){
+          board[row - 2][col - 1] = 0;
+        }
+      }
+    }
+    if (solveH(row + 2, col - 1, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row + 2 < 0 || col - 1< 0 || row + 2 >= board.length || col - 1 >= board[0].length)){
+        if (board[row + 2][col - 1] == level + 1){
+          board[row + 2][col - 1] = 0;
+        }
+      }
+    }
+    if (solveH(row - 2, col + 1, level + 1)){
+      return true;
+    }
+    else{
+      if (!(row - 2 < 0 || col + 1 < 0 || row - 2 >= board.length || col + 1 >= board[0].length)){
+        if (board[row - 2][col + 1] == level + 1){
+          board[row - 2][col + 1] = 0;
         }
       }
     }
