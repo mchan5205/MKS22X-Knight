@@ -1,5 +1,6 @@
 public class KnightBoard{
   private int[][] board;
+  private int[] moves;
   public KnightBoard(int rows, int cols){
     board = new int[rows][cols];
     for (int r = 0; r < rows; r++){
@@ -7,6 +8,7 @@ public class KnightBoard{
         board[r][c] = 0;
       }
     }
+    moves = new int[] {1, 2, 2, 1, 2, -1, 1, -2, -1, -2, -2, -1, -2, 1, -1, 2};
   }
   public String toString(){
     boolean great = false;
