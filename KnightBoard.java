@@ -13,6 +13,13 @@ public class KnightBoard{
   public String toString(){
     boolean great = false;
     String s = "";
+    if (board[0][0] == 0){
+      for (int r = 0; r < board.length; r++){
+        for (int c = 0; c < board[r].length; c++){
+
+        }
+      }
+    }
     for (int r = 0; r < board.length; r++){
       for (int c = 0; c < board[r].length; c++){
         if (board[r][c] > 9){
@@ -37,6 +44,16 @@ public class KnightBoard{
     return s;
   }
   public boolean solve(int startingRow, int startingCol){
+    for (int r = 0; r < board.length; r ++){
+      for (int c = 0; c < board.length; c ++){
+        if (board[r][c] != 0){
+          throw new IllegalStateException();
+        }
+      }
+    }
+    if (startingRow < 0 || startingCol < 0 || startingRow >= board.length || startingRow >= board[0].length){
+      throw new IllegalArgumentException();
+    }
     return solveH(startingRow, startingCol, 1);
   }
   private boolean solveH(int row, int col, int level){
@@ -67,7 +84,20 @@ public class KnightBoard{
     return false;
   }
   public int countSolutions(int startingRow, int startingCol){
-    return countSolutionsh(startingRow, startingCol, 1);
+    int total = 0;
+    for (int r = 0; r < board.length; r ++){
+      for (int c = 0; c < board.length; c ++){
+        if (board[r][c] != 0){
+          throw new IllegalStateException();
+        }
+      }
+    }
+    if (startingRow < 0 || startingCol < 0 || startingRow >= board.length || startingRow >= board[0].length){
+      throw new IllegalArgumentException();
+    }
+    total = countSolutionsh(startingRow, startingCol, 1);
+    board[startingRow][startingCol] = 0;
+    return total;
   }
   public int countSolutionsh(int row, int col, int level){
     int sum = 0;
